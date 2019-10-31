@@ -2,17 +2,18 @@
 /* !Foreach Loops! */ 
 
 include ('list.php');
+
+//Create status flag
+$status = false; //Make changes to what the script display based on true false 
+
 //Create filter array 
 $filter = array();
 
 /* Foreach Loop key and value */
 
 foreach ($list as $key => $item){
-    if($item['complete']) { //If item = complete (only one is complete)
+    if($item['complete'] == $status) { //If 'Complete' == true/false == $status (Complete)/(Incomplete)
         $filter[] = $key; //Add key to the filter array
-        /* echo '<pre>'; //Preformatted text 
-        var_dump($key,$item); //Dispaly details of $key and $item 
-        echo '</pre>'; */
     }   
 }
 /* echo '<pre>';
@@ -30,7 +31,7 @@ echo '<th>Complete</th>';
 echo '</th>';
 foreach($filter as $id){//Change array to $filter and $item to $id because it identifies list item
     echo '<tr>';//Each iteration add table row
-    echo /*Each iteration add table cell */ '<td>' . $item['title'] . "</td> \n";//Echo value of 'title' on each iteration
+    //echo /*Each iteration add table cell */ '<td>' . $item['title'] . "</td> \n";//Echo value of 'title' on each iteration
     echo '<td>' . $list[$id]['title'] . "<td> \n";//Reference list directly through its indexed $id
     echo '<td>' . $list[$id]['priority'] . "<td> \n";
     echo '<td>' . $list[$id]['due'] . "<td> \n";
