@@ -11,7 +11,7 @@ $filter = array();
 
 /* Foreach Loop key and value */
 
-foreach ($list as $key => $item){
+foreach ($list as $key => $item){// Since this is an or || it can be true for both allowing all incomplete and complete
     if($status === 'all' /*identically matching type and value */ || $item['complete'] == $status) { //If 'Complete/Incomplete/All' == true/false/all == $status (Complete)/(Incomplete)
         $filter[] = $key; //Add key to the filter array
     }   
