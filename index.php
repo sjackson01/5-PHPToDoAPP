@@ -4,7 +4,7 @@
 include ('list.php');
 
 //Create status flag
-$status = false; //Make changes to what the script display based on true false 
+$status = 'all'; //Make changes to what the script display based on true/false/all 
 
 //Create filter array 
 $filter = array();
@@ -12,14 +12,17 @@ $filter = array();
 /* Foreach Loop key and value */
 
 foreach ($list as $key => $item){
-    if($item['complete'] == $status) { //If 'Complete' == true/false == $status (Complete)/(Incomplete)
+    if($status === 'all' /*identically matching type and value */ || $item['complete'] == $status) { //If 'Complete/Incomplete/All' == true/false/all == $status (Complete)/(Incomplete)
         $filter[] = $key; //Add key to the filter array
     }   
 }
-/* echo '<pre>';
-var_dump($filter, $list); //Display output 
+
+//Used to show example of string 'all' === 'true'
+//An empty string == 'false'
+ echo '<pre>';
+var_dump($status, boolval('all'), $status === 'all');
 echo '</pre>';
-*/ 
+
 
 /* Create Table */
 echo '<table>';
