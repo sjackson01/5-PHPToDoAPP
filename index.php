@@ -2,20 +2,23 @@
 /* !Foreach Loops! */ 
 
 include ('list.php');
+//Create filter array 
+$filter = array();
 
 /* Foreach Loop key and value */
 
 foreach ($list as $key => $item){
-    echo $key . ' = ' . $item['title'] . "<br />\n";
+    if($item['complete']) { //If item = complete (only one is complete)
+        $filter[] = $key; //Add key to the filter array
+        /* echo '<pre>'; //Preformatted text 
+        var_dump($key,$item); //Dispaly details of $key and $item 
+        echo '</pre>'; */
+    }   
 }
-/* Output
-0 = Laundry
-1 = Dishes
-2 = Dust
-3 = Vacuum
-4 = Make Dinner
-5 = Clean Out Fridge
-*/
+/* echo '<pre>';
+var_dump($filter, $list); //Display output 
+echo '</pre>';
+*/ 
 
 /* Create Table */
 echo '<table>';
